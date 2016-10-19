@@ -1,4 +1,3 @@
-import java.io.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.management.ManagementFactory;
@@ -7,9 +6,9 @@ import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryMXBean;
 
-public class JVM_MBeans_1 {
+public class JVM_MBeans_Monitor {
 
-	private static void printOperatingSystemMXBean() {
+	public static void printOperatingSystemMXBean() {
 		OperatingSystemMXBean operatingSystemMXBean = ManagementFactory
 				.getOperatingSystemMXBean();
 		System.out.print("n");
@@ -30,7 +29,10 @@ public class JVM_MBeans_1 {
 		}
 	}
 
-	private static void printGarbageCollectorMXBean() {
+	/**
+	 * 
+	 */
+	public static void printGarbageCollectorMXBean() {
 		java.util.List<java.lang.management.GarbageCollectorMXBean> list = (java.util.List<java.lang.management.GarbageCollectorMXBean>) ManagementFactory
 				.getGarbageCollectorMXBeans();
 		int count = 0;
@@ -48,7 +50,7 @@ public class JVM_MBeans_1 {
 		}
 	}
 
-	private static void printMemoryPoolMXBean() {
+	public static void printMemoryPoolMXBean() {
 		java.util.List<java.lang.management.MemoryPoolMXBean> list = (java.util.List<java.lang.management.MemoryPoolMXBean>) ManagementFactory
 				.getMemoryPoolMXBeans();
 		int count = 0;
@@ -90,7 +92,7 @@ public class JVM_MBeans_1 {
 		}
 	}
 
-	private static void printMemoryMXBean() {
+	public static void printMemoryMXBean() {
 		MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
 		System.out.print("n");
 		for (Method method : memoryMXBean.getClass().getDeclaredMethods()) {
@@ -107,42 +109,5 @@ public class JVM_MBeans_1 {
 				System.out.println("t" + method.getName() + " = " + value);
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println("nnt----------JVM Runtime Details---------");
-		System.out.println("tAvailable processors (Cores): "
-				+ Runtime.getRuntime().availableProcessors());
-		System.out.println("tInitial Memory (-Xms)       : "
-				+ (Runtime.getRuntime().freeMemory() / (1024 * 1024)) + " MB");
-		long maxMemory = Runtime.getRuntime().maxMemory();
-		System.out.println("tMaximum JVM Memory (-Xmx)   : "
-				+ (maxMemory / (1024 * 1024)) + " MB");
-		System.out.println("tTotal Used JVM Memory       : "
-				+ (Runtime.getRuntime().totalMemory() / (1024 * 1024)) + " MB");
-
-		File[] roots = File.listRoots();
-		System.out.println("nnt----------FileSystem Details---------");
-		for (File root : roots) {
-			System.out.println("ntFileSystem Root Details: "
-					+ root.getAbsolutePath());
-			System.out.println("tTotal Space              : "
-					+ (root.getTotalSpace() / (1024 * 1024)) + " MB");
-			System.out.println("tFree Space               : "
-					+ (root.getFreeSpace() / (1024 * 1024)) + " MB");
-			System.out.println("tUsable Space             : "
-					+ (root.getUsableSpace() / (1024 * 1024)) + " MB");
-		}
-		System.out.println("nnt----------CPU USAGES---------");
-		printOperatingSystemMXBean();
-
-		System.out.println("nnt----------GARBAGE COLLECTOR USAGES---------");
-		printGarbageCollectorMXBean();
-
-		System.out.println("nnt----------MemoryPoolMXBean USAGES---------");
-		printMemoryPoolMXBean();
-
-		System.out.println("nnt----------MemoryMXBean USAGES---------");
-		printMemoryMXBean();
 	}
 }
