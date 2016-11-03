@@ -22,5 +22,13 @@
 
 	- memory soft limit, akkor érvényesül ha versengés van a memóriáért, akkor visszaszorítja
 
+memory.oom_control
+contains a flag (0 or 1) that enables or disables the Out of Memory killer for a cgroup. If enabled (0), 
+tasks that attempt to consume more memory than they are allowed are immediately killed by the OOM killer. 
+The OOM killer is enabled by default in every cgroup using the memory subsystem; to disable it, write 
+1 to the memory.oom_control file:
+
+When the OOM killer is disabled, tasks that attempt to use more memory than they are allowed are paused until additional memory is freed.
+
 [12483.894890] Task in /test_group killed as a result of limit of /test_group
 - (free sem tud a korlátról)
