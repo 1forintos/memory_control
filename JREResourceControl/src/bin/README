@@ -1,5 +1,0 @@
-Usage:
-[1] No arguments: prints OS and JVM memory stats.
-[2] 1 argument: <filePath>. Prints OS and JVM memory stats before and after loading the file at <filePath> using MMIO.
-You can easily create a dummy file with a certain size on Linux by using the fallocate command. Example of reating a 300MB file: "fallocate -l 300M dummy_file.txt"
-[3] 1 argument: -h  - Prints this help message.
