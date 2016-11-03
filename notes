@@ -1,0 +1,26 @@
+- many Java threads by simple app:
+	http://stackoverflow.com/questions/31029207/why-does-a-single-threaded-java-program-have-so-many-threads
+
+- htop -p shows more threads / processes
+	- By default, htop lists each thread of a process separately, 
+	while ps doesn't. To turn off the display of threads, press H, 
+	or use the "Setup / Display options" menu, "Hide userland threads". 
+
+- memory overcommit
+	- VM szinten: http://searchservervirtualization.techtarget.com/definition/memory-overcommit
+
+- úgy paraméterezni esetleg hogy tudjon a korlátról
+
+- docker only 64 bit reference
+	- Prerequisites: https://docs.docker.com/engine/installation/linux/ubuntulinux/ 
+
+- cgroup on belül:	
+	- a csoporton bleüli process ek nem group-aware -ek
+	- cat memory.limit_in_bytes	
+	- cat memory.usage_in_bytes
+	- swap pal tud foglalni, swap nélkül ha elfogy a memória, kilövi a cgroup
+
+	- memory soft limit, akkor érvényesül ha versengés van a memóriáért, akkor visszaszorítja
+
+[12483.894890] Task in /test_group killed as a result of limit of /test_group
+- (free sem tud a korlátról)

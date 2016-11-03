@@ -35,8 +35,13 @@ public class Main {
 				long fileSize = rwCh.size();
 				MappedByteBuffer mapFile = rwCh.map(FileChannel.MapMode.READ_WRITE, 0, fileSize);
 		        //rwCh.close();
-		        mapFile.load();
-				System.out.println("Successfully loaded file: " + filePath + " , File size: " + fileSize / 1024 + "K");
+		        //mapFile.load();
+				int size = 512*1024*1024;
+		        byte b[] = new byte[512*1024*1024];
+		        for(int i = 0; i < size; i++) {
+		        	b[i] = (byte)0xFF;
+		        }
+				System.out.println("Successfully mapped file: " + filePath + " , File size: " + fileSize / 1024 + "K");
 				System.out.println();
 
 		        mapFile.put((byte) 0xff);
