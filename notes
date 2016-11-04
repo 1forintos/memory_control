@@ -10,6 +10,7 @@
 	- VM szinten: http://searchservervirtualization.techtarget.com/definition/memory-overcommit
 
 - úgy paraméterezni esetleg hogy tudjon a korlátról
+	- nope
 
 - docker only 64 bit reference
 	- Prerequisites: https://docs.docker.com/engine/installation/linux/ubuntulinux/ 
@@ -32,3 +33,13 @@ When the OOM killer is disabled, tasks that attempt to use more memory than they
 
 [12483.894890] Task in /test_group killed as a result of limit of /test_group
 - (free sem tud a korlátról)
+
+
+cgroups alkalmassága 
+
++ táblázatok, eredmények, milyen eset, swapon swapoff, dmesg is
+- xms, cgroups, swap on off, xmx
+
+oszlopok: cgroups memory.limit_in_bytes, Xmx, Xms, swap (on,off), detektált MaxHeap,  viselkedés, megjegyzés
+
+cgroups nélkül is (korlát: 0)
