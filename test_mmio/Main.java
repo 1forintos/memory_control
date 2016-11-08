@@ -1,4 +1,9 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.lang.management.ManagementFactory;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.Scanner;
 
 public class Main {
@@ -13,38 +18,16 @@ public class Main {
 				filePath = args[0];
 			}
 		}
-		filePath = "/home/mkamras/jre_mem_controll/dummy_file.txt";
+		filePath = "/dummy_file.txt";
 		System.out.println("Arch: " + System.getProperty("os.arch"));
 		System.out.println("PID: " + ManagementFactory.getRuntimeMXBean().getName());
 		
 		System.out.println();
-		//System.out.println("INITIAL MEMORY STATS OS:");
-		//JVM_MBeans_Monitor.printOperatingSystemMXBean();
 		System.out.println("JVM MEMORY:");
 		JVM_MBeans_Monitor.printMemoryMXBean();
-		
+		System.out.println((Runtime.getRuntime().maxMemory() / (1024 * 1024)) + " MB max Heap");
 		System.out.println();
-		//int num = 0;
-        //Vector v = new Vector();
-		//int size = 512*1024*1024;
-        byte b[] = new byte[512*1024*1024];
-       // while (true)
-        //{
-           // byte b[] = new byte[1048576];
-            /*for(int i = 0; i < 1048576; i++) {
-	        	b[i] = (byte)0xFF;
-	        }*/
-            //v.add(b);
-            Runtime rt = Runtime.getRuntime();
-            // System.out.println( "free memory: " + rt.freeMemory() );
-           // num++;
-            //System.out.println(num + " MB allocated.");
-            System.out.println((Runtime.getRuntime().maxMemory() / (1024 * 1024)) + " MB max Heap");
-    		System.out.println();
-    		Scanner reader = new Scanner(System.in);  // Reading from System.in
-    		String n = reader.next(); // Scans the next token of the input as an int.
-        //}
-		/*
+		
 		if(filePath != null) {
 			FileChannel rwCh = null;
 			try {
@@ -54,14 +37,11 @@ public class Main {
 		        //rwCh.close();
 		        //mapFile.load();
 				int size = 512*1024*1024;
-		        byte b[] = new byte[512*1024*1024];
 		        for(int i = 0; i < size; i++) {
-		        	b[i] = (byte)0xFF;
+			        mapFile.put((byte) 0xff);
 		        }
 				System.out.println("Successfully mapped file: " + filePath + " , File size: " + fileSize / 1024 + "K");
 				System.out.println();
-
-		        mapFile.put((byte) 0xff);
 				
 				Scanner reader = new Scanner(System.in);  // Reading from System.in
 				while(true) {
@@ -81,7 +61,7 @@ public class Main {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
-		}*/
+		}
 	}
 	
 	private static void printHelp() {
