@@ -1,0 +1,6 @@
+Generate JNI header file:
+	javah JNITest.java
+
+Compile (watch out for the include directory in case of the c file):
+javac JNITest.java
+gcc -shared -fpic -o libfoo.so -I/usr/lib/jvm/jdk1.7.0_80/include/ -I/usr/lib/jvm/jdk1.7.0_80/include/linux foo.c
