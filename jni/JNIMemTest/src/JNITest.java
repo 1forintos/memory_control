@@ -10,7 +10,6 @@ public class JNITest {
     } 
 
     public static void main(String[] args) {
-    	byte[] data = new byte[200 * 1024 * 1024];
 		System.out.println("PID: " + ManagementFactory.getRuntimeMXBean().getName());
     	printMemory();
     	Scanner in = new Scanner(System.in);
