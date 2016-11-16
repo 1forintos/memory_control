@@ -7,7 +7,7 @@ public class JNITest {
 
     static {
         System.loadLibrary("foo");
-    }        
+    } 
 
     public static void main(String[] args) {
     	byte[] data = new byte[200 * 1024 * 1024];
@@ -35,18 +35,18 @@ public class JNITest {
 		//Getting the runtime reference from system
 		Runtime runtime = Runtime.getRuntime();
 		//Print used memory
-		System.out.println("Used Memory:" 
-			+ (runtime.totalMemory() - runtime.freeMemory()) / mb);
+		System.out.println("Used Memory: " 
+			+ ((runtime.totalMemory() - runtime.freeMemory()) / mb) + " MB");
 
 		//Print free memory
-		System.out.println("Free Memory:" 
-			+ runtime.freeMemory() / mb);
+		System.out.println("Free Memory: " 
+			+ (runtime.freeMemory() / mb) + " MB");
 		
 		//Print total available memory
-		System.out.println("Total Memory:" + runtime.totalMemory() / mb);
+		System.out.println("Total Memory: " + (runtime.totalMemory() / mb) + " MB");
 
 		//Print Maximum available memory
-		System.out.println("Max Memory:" + runtime.maxMemory() / mb);
+		System.out.println("Max Memory: " + (runtime.maxMemory() / mb) + " MB");
 		
 	}
 	private static void printOptions() {
