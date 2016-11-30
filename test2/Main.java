@@ -19,7 +19,7 @@ public class Main {
         for(int i = 0; i < maxSize; i++)
         {
 	        byte b[] = new byte[1024*1024];
-	        for(int i = 0; i < 1024*1024; i++) {
+	        for(int j = 0; j < 1024*1024; j++) {
 	        	b[i] = (byte)0xFF;
 	        }
 	        v.add(b);
